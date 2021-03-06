@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
-@RestController()
+@RestController
 @RequestMapping("/doctor")
 class DoctorController(
     private val doctorApiService: DoctorApiService
@@ -25,11 +25,11 @@ class DoctorController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createDoctor(@RequestBody @Valid createDoctorDto: CreateDoctorDto): DoctorDto =
+    fun createDoctor(@Valid @RequestBody createDoctorDto: CreateDoctorDto): DoctorDto =
         doctorApiService.createDoctor(createDoctorDto)
 
     @PutMapping("{id}")
-    fun updateDoctor(@PathVariable id: String, @RequestBody @Valid createDoctorDto: CreateDoctorDto): DoctorDto =
+    fun updateDoctor(@PathVariable id: String, @Valid @RequestBody createDoctorDto: CreateDoctorDto): DoctorDto =
         doctorApiService.updateDoctor(id, createDoctorDto)
 
     @DeleteMapping("{id}")

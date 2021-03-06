@@ -10,6 +10,7 @@ import io.kotest.spring.SpringListener
 import org.clinic.dto.doctor.CreateDoctorDto
 import org.clinic.dto.doctor.DoctorDto
 import org.clinic.model.Doctor
+import org.clinic.model.enum.Specialisation
 import org.modelmapper.ModelMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -37,7 +38,7 @@ class DoctorMapperTest : StringSpec() {
 
                 val doctorDto = doctorMapper.map(it)
 
-                val expected = DoctorDto(it.id.toString(), it.firstName, it.lastName, it.address)
+                val expected = DoctorDto(it.id.toString(), it.firstName, it.lastName, it.specialisation.name)
                 doctorDto shouldBe expected
             }
         }
@@ -47,7 +48,7 @@ class DoctorMapperTest : StringSpec() {
 
                 val doctor = doctorMapper.map(it)
 
-                val expected = Doctor(UUID.randomUUID(), it.firstName, it.lastName, it.address)
+                val expected = Doctor(UUID.randomUUID(), it.firstName, it.lastName, Specialisation.valueOf(it.specialisation))
                 doctor.shouldBeEqualToIgnoringFields(expected, Doctor::id)
             }
         }
@@ -58,15 +59,15 @@ class DoctorMapperTest : StringSpec() {
 
                 doctorMapper.map(it, doctor)
 
-                val expected = Doctor(doctor.id, it.firstName, it.lastName, it.address)
+                val expected = Doctor(doctor.id, it.firstName, it.lastName, Specialisation.valueOf(it.specialisation))
                 doctor shouldBe expected
             }
         }
     }
 
     private fun generateDoctor(): Doctor =
-        Doctor(UUID.randomUUID(), faker.name.firstName(), faker.name.lastName(), faker.address.fullAddress())
+        Doctor(UUID.randomUUID(), faker.name.firstName(), faker.name.lastName(), Specialisation.DENTIST)
 
     private fun generateCreateDoctorDto(): CreateDoctorDto =
-        CreateDoctorDto(faker.name.firstName(), faker.name.lastName(), faker.address.fullAddress())
+        CreateDoctorDto(faker.name.firstName(), faker.name.lastName(), "DENTIST")
 }

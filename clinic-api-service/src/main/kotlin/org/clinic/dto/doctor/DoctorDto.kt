@@ -7,5 +7,5 @@ data class DoctorDto(
     var id: String,
     var firstName: String,
     var lastName: String,
-    var address: String
+    var specialisation: String
 )

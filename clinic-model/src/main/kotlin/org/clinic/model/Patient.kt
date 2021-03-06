@@ -1,19 +1,16 @@
 package org.clinic.model
 
-import org.clinic.model.enum.Specialisation
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
 @Table(name = "doctors")
-data class Doctor(
+data class Patient(
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -27,8 +24,4 @@ data class Doctor(
 
     @Column(nullable = false)
     var lastName: String,
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    var specialisation: Specialisation
 )
