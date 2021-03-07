@@ -10,13 +10,9 @@ import org.springframework.stereotype.Component
 class DoctorMapper(
     private val modelMapper: ModelMapper
 ) {
+    fun map(doctor: Doctor): DoctorDto = modelMapper.map(doctor, DoctorDto::class.java)
 
-    fun map(doctor: Doctor): DoctorDto =
-        modelMapper.map(doctor, DoctorDto::class.java)
+    fun map(createDoctorDto: CreateDoctorDto): Doctor = modelMapper.map(createDoctorDto, Doctor::class.java)
 
-    fun map(createDoctorDto: CreateDoctorDto): Doctor =
-        modelMapper.map(createDoctorDto, Doctor::class.java)
-
-    fun map(source: CreateDoctorDto, dest: Doctor) =
-        modelMapper.map(source, dest)
+    fun map(source: CreateDoctorDto, dest: Doctor) = modelMapper.map(source, dest)
 }

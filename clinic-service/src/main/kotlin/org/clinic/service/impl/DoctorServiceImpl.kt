@@ -1,6 +1,6 @@
 package org.clinic.service.impl
 
-import org.clinic.exception.ResourceNotFound
+import org.clinic.exception.ResourceNotFoundException
 import org.clinic.model.Doctor
 import org.clinic.repository.DoctorRepository
 import org.clinic.service.DoctorService
@@ -13,7 +13,7 @@ class DoctorServiceImpl(
     private val doctorRepository: DoctorRepository
 ) : DoctorService {
     override fun getDoctor(id: UUID): Doctor =
-        doctorRepository.findByIdOrNull(id) ?: throw ResourceNotFound()
+        doctorRepository.findByIdOrNull(id) ?: throw ResourceNotFoundException()
 
     override fun save(doctor: Doctor): Doctor = doctorRepository.save(doctor)
 

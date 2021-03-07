@@ -1,14 +1,14 @@
-package org.clinic.dto.doctor
+package org.clinic.dto.patient
 
 import org.clinic.annotation.Dto
 
 @Dto
-data class DoctorDto(
+data class PatientDto(
     var id: String,
 
     var firstName: String,
 
     var lastName: String,
 
-    var specialisation: String
+    var address: String
 )

@@ -1,3 +1,3 @@
 package org.clinic.annotation
 
-annotation class Dto()
+annotation class Dto

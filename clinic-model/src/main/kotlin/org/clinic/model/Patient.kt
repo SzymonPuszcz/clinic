@@ -9,7 +9,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "doctors")
+@Table(name = "patients")
 data class Patient(
     @Id
     @GeneratedValue(generator = "UUID")
@@ -24,4 +24,7 @@ data class Patient(
 
     @Column(nullable = false)
     var lastName: String,
+
+    @Column(nullable = false)
+    var address: String,
 )

@@ -1,5 +1,6 @@
-package org.clinic.apiservice
+package org.clinic.apiservice.impl
 
+import org.clinic.apiservice.DoctorApiService
 import org.clinic.dto.doctor.CreateDoctorDto
 import org.clinic.dto.doctor.DoctorDto
 import org.clinic.ext.toUUID
@@ -12,13 +13,10 @@ class DoctorApiServiceImpl(
     private val doctorService: DoctorService,
     private val doctorMapper: DoctorMapper
 ) : DoctorApiService {
-
     override fun getDoctor(id: String): DoctorDto =
         getDoctorById(id).let {
             doctorMapper.map(it)
         }
-
-    private fun getDoctorById(id: String) = doctorService.getDoctor(id.toUUID())
 
     override fun createDoctor(createDoctorDto: CreateDoctorDto): DoctorDto =
         doctorMapper.map(createDoctorDto).let {
@@ -34,4 +32,6 @@ class DoctorApiServiceImpl(
         }
 
     override fun deleteDoctor(id: String) = doctorService.deleteDoctor(id.toUUID())
+
+    private fun getDoctorById(id: String) = doctorService.getDoctor(id.toUUID())
 }

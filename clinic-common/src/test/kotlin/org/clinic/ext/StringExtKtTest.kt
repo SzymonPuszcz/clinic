@@ -7,7 +7,7 @@ import io.kotest.data.headers
 import io.kotest.data.row
 import io.kotest.data.table
 import io.kotest.matchers.shouldBe
-import org.clinic.exception.IllegalUUIDValue
+import org.clinic.exception.IllegalUUIDValueException
 import java.util.UUID
 
 class StringExtKtTest : StringSpec({
@@ -34,11 +34,11 @@ class StringExtKtTest : StringSpec({
                 headers("uuidString"),
                 row("f5997327_6f30_4e23_b7ec_016763d455d2"),
                 row("f5997327-6f30-4e23-016763d455d2"),
-                row("smaple text"),
+                row("sample text"),
                 row(""),
             )
         ) {
-            shouldThrow<IllegalUUIDValue> {
+            shouldThrow<IllegalUUIDValueException> {
                 it.toUUID()
             }
         }

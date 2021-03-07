@@ -1,8 +1,5 @@
 package org.clinic.mapper
 
-import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.FakerConfig
-import io.github.serpro69.kfaker.create
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.equality.shouldBeEqualToIgnoringFields
 import io.kotest.matchers.shouldBe
@@ -11,23 +8,17 @@ import org.clinic.dto.doctor.CreateDoctorDto
 import org.clinic.dto.doctor.DoctorDto
 import org.clinic.model.Doctor
 import org.clinic.model.enum.Specialisation
+import org.clinic.utils.createFaker
 import org.modelmapper.ModelMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import java.util.Random
 import java.util.UUID
 
 @SpringBootTest(classes = [DoctorMapper::class, ModelMapper::class])
 class DoctorMapperTest : StringSpec() {
-
     override fun listeners() = listOf(SpringListener)
 
-    private val faker = run {
-        val fakerConfig = FakerConfig.builder().create {
-            random = Random(42)
-        }
-        Faker(fakerConfig)
-    }
+    private val faker = createFaker()
 
     @Autowired
     private lateinit var doctorMapper: DoctorMapper

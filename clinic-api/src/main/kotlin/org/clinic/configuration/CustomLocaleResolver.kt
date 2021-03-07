@@ -21,11 +21,11 @@ class CustomLocaleResolver : AcceptHeaderLocaleResolver(), WebMvcConfigurer {
         ReloadableResourceBundleMessageSource().apply {
             setBasename("classpath:messages")
             setDefaultEncoding("UTF-8")
-            setUseCodeAsDefaultMessage(true)
+            setUseCodeAsDefaultMessage(false)
         }
 
     @Bean
-    fun methodValidationPostProcessor(): MethodValidationPostProcessor? {
+    fun methodValidationPostProcessor(): MethodValidationPostProcessor {
         return MethodValidationPostProcessor()
     }
 }

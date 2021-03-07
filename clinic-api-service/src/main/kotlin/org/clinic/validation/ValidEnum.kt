@@ -15,7 +15,7 @@ import kotlin.reflect.KClass
 annotation class ValidEnum(
     val enumClass: KClass<out Enum<*>>,
 
-    val message: String = "",
+    val message: String = "{org.clinic.validation.ValidEnum.message}",
 
     val groups: Array<KClass<*>> = [],
 

@@ -1,0 +1,24 @@
+package org.clinic.service.impl
+
+import org.clinic.exception.ResourceNotFoundException
+import org.clinic.model.Patient
+import org.clinic.repository.PatientRepository
+import org.clinic.service.PatientService
+import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Service
+import java.util.UUID
+
+@Service
+class PatientServiceImpl(
+    private val patientRepository: PatientRepository
+) : PatientService {
+    override fun getPatient(id: UUID): Patient =
+        patientRepository.findByIdOrNull(id) ?: throw ResourceNotFoundException()
+
+    override fun save(patient: Patient): Patient = patientRepository.save(patient)
+
+    override fun deletePatient(id: UUID) {
+        if (patientRepository.existsById(id))
+            patientRepository.deleteById(id)
+    }
+}
