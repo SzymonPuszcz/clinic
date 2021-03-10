@@ -16,8 +16,6 @@ import java.util.UUID
 
 @SpringBootTest(classes = [DoctorMapper::class, ModelMapper::class])
 class DoctorMapperTest : StringSpec() {
-    override fun listeners() = listOf(SpringListener)
-
     private val faker = createFaker()
 
     @Autowired
@@ -55,6 +53,8 @@ class DoctorMapperTest : StringSpec() {
             }
         }
     }
+
+    override fun listeners() = listOf(SpringListener)
 
     private fun generateDoctor(): Doctor =
         Doctor(UUID.randomUUID(), faker.name.firstName(), faker.name.lastName(), Specialisation.DENTIST)

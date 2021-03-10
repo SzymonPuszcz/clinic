@@ -3,9 +3,9 @@ package org.clinic.validation
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
 
-class ValidEnumValidator : ConstraintValidator<ValidEnum, String> {
+class ValidEnumValidator : ConstraintValidator<ValidEnum, String?> {
 
-    private var enumValues: Array<out Enum<*>> = arrayOf()
+    private lateinit var enumValues: Array<out Enum<*>>
 
     override fun initialize(constraintAnnotation: ValidEnum) {
         super.initialize(constraintAnnotation)

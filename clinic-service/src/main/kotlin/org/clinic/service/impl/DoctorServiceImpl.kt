@@ -15,7 +15,7 @@ class DoctorServiceImpl(
     override fun getDoctor(id: UUID): Doctor =
         doctorRepository.findByIdOrNull(id) ?: throw ResourceNotFoundException()
 
-    override fun save(doctor: Doctor): Doctor = doctorRepository.save(doctor)
+    override fun saveDoctor(doctor: Doctor): Doctor = doctorRepository.save(doctor)
 
     override fun deleteDoctor(id: UUID) {
         if (doctorRepository.existsById(id))

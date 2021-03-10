@@ -7,6 +7,8 @@ import org.clinic.annotation.Dto
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 data class ApiErrorDto(
     val message: String,
+
     val errors: List<String>? = null,
+
     val fieldErrors: Map<String, String>? = null
 )

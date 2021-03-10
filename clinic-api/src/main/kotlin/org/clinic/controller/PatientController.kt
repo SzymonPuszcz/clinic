@@ -1,6 +1,8 @@
 package org.clinic.controller
 
 import org.clinic.apiservice.PatientApiService
+import org.clinic.dto.page.PageRequestDto
+import org.clinic.dto.page.PageResponseDto
 import org.clinic.dto.patient.CreatePatientDto
 import org.clinic.dto.patient.PatientDto
 import org.springframework.http.HttpStatus
@@ -20,6 +22,10 @@ import javax.validation.Valid
 class PatientController(
     private val patientApiService: PatientApiService
 ) {
+    @GetMapping
+    fun getAllPatients(pageRequestDto: PageRequestDto): PageResponseDto<PatientDto> =
+        patientApiService.getAllPatients(pageRequestDto)
+
     @GetMapping("{id}")
     fun getPatient(@PathVariable id: String): PatientDto = patientApiService.getPatient(id)
 

@@ -7,9 +7,7 @@ import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Component
 
 @Component
-class PatientMapper(
-    private val modelMapper: ModelMapper
-) {
+class PatientMapper(modelMapper: ModelMapper) : BaseMapper(modelMapper) {
     fun map(patient: Patient): PatientDto = modelMapper.map(patient, PatientDto::class.java)
 
     fun map(createPatientDto: CreatePatientDto): Patient = modelMapper.map(createPatientDto, Patient::class.java)

@@ -20,14 +20,14 @@ class DoctorApiServiceImpl(
 
     override fun createDoctor(createDoctorDto: CreateDoctorDto): DoctorDto =
         doctorMapper.map(createDoctorDto).let {
-            val createdDoctor = doctorService.save(it)
+            val createdDoctor = doctorService.saveDoctor(it)
             doctorMapper.map(createdDoctor)
         }
 
     override fun updateDoctor(id: String, createDoctorDto: CreateDoctorDto): DoctorDto =
         getDoctorById(id).let {
             doctorMapper.map(createDoctorDto, it)
-            doctorService.save(it)
+            doctorService.saveDoctor(it)
             doctorMapper.map(it)
         }
 

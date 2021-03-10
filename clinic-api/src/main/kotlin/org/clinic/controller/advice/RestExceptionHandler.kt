@@ -1,6 +1,8 @@
 package org.clinic.controller.advice
 
 import org.clinic.dto.ApiErrorDto
+import org.clinic.exception.ApiException
+import org.clinic.exception.IllegalPropertyException
 import org.clinic.exception.IllegalUUIDValueException
 import org.clinic.exception.ResourceNotFoundException
 import org.springframework.context.MessageSource
@@ -16,16 +18,20 @@ import java.util.Locale
 class RestExceptionHandler(
     private val messageSource: MessageSource
 ) {
-    @ExceptionHandler(IllegalUUIDValueException::class)
-    fun handleBadRequestException(ex: IllegalUUIDValueException, locale: Locale): ResponseEntity<ApiErrorDto> =
+    @ExceptionHandler(value = [IllegalUUIDValueException::class, IllegalPropertyException::class])
+    fun handleBadRequestException(ex: RuntimeException, locale: Locale): ResponseEntity<ApiErrorDto> =
         createResponseEntity(HttpStatus.BAD_REQUEST, ex, locale)
 
     @ExceptionHandler(
         ResourceNotFoundException::class,
         HttpMessageNotReadableException::class
     )
-    fun handleNotFoundException(ex: ResourceNotFoundException, locale: Locale): ResponseEntity<ApiErrorDto> =
+    fun handleNotFoundException(ex: RuntimeException, locale: Locale): ResponseEntity<ApiErrorDto> =
         createResponseEntity(HttpStatus.NOT_FOUND, ex, locale)
+
+    @ExceptionHandler(ApiException::class)
+    fun handleApiException(ex: ApiException, locale: Locale): ResponseEntity<ApiErrorDto> =
+        createResponseEntity(ex.httpStatus, ex, locale)
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleMethodArgumentNotValidException(ex: MethodArgumentNotValidException, locale: Locale): ResponseEntity<ApiErrorDto> =
@@ -49,5 +55,5 @@ class RestExceptionHandler(
         ApiErrorDto(getExceptionMessage(ex, locale))
 
     private fun getExceptionMessage(ex: Exception, locale: Locale) =
-        messageSource.getMessage(ex::class.simpleName + ".message", null, locale)
+        messageSource.getMessage("${ex::class.simpleName}.message", null, locale)
 }
