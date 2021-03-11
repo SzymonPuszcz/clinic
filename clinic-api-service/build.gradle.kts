@@ -11,7 +11,6 @@ dependencies {
         exclude(module = "junit")
         exclude(module = "mockito-core")
     }
-    // testImplementation("io.mockk:mockk:1.10.6")
     testImplementation("com.ninja-squad:springmockk:3.0.1")
 }
 

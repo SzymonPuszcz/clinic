@@ -1,15 +1,28 @@
 spring:
-  datasource:
-    url:
-    username:
-    password:
   jpa:
+    open-in-view: false
     show-sql: true
+    database: postgresql
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
-        dialect:
-          org.hibernate.dialect.PostgreSQL95Dialect
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+  datasource:
+    initialization-mode: never
+
+tenants:
+  databases:
+    client1:
+      jdbc-url: jdbc:postgresql://localhost:5433/clinic-db
+      driver-class-name: org.postgresql.Driver
+      username: clinic
+      password: p@ss
+    client2:
+      jdbc-url: jdbc:postgresql://localhost:5433/clinicdb2
+      driver-class-name: org.postgresql.Driver
+      username: clinic
+      password: p@ss
+
 server:
   port: 8081
