@@ -2,10 +2,12 @@ package org.clinic.model
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.OneToMany
 import javax.persistence.Table
 
 @Entity
@@ -27,4 +29,7 @@ data class Patient(
 
     @Column(nullable = false)
     var address: String,
+
+    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "patient")
+    var appointments: MutableList<Appointment> = mutableListOf()
 )
