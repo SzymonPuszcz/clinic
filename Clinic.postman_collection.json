@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "563d5317-ffec-4e8e-afd6-bd40ef9fd358",
+		"name": "Clinic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Doctor",
+			"item": [
+				{
+					"name": "Get doctor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/doctor/2889d790-08f4-4458-843f-92721d26df1b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"doctor",
+								"2889d790-08f4-4458-843f-92721d26df1b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete doctor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/doctor/2889d790-08f4-4458-843f-92721d26df1b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"doctor",
+								"2889d790-08f4-4458-843f-92721d26df1b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create doctor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "tenant",
+								"type": "text",
+								"value": "client1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Barry\",\n    \"lastName\": \"Farber\",\n    \"specialisation\": \"DENTIST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/doctor",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"doctor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit doctor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Jerold\",\n    \"lastName\": \"Twin\",\n    \"specialisation\": \"SURGEON\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/doctor/2889d790-08f4-4458-843f-92721d26df1b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"doctor",
+								"2889d790-08f4-4458-843f-92721d26df1b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Get patient",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patient/6c68fbb9-d4e1-44e6-a276-458654452a7c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patient",
+								"6c68fbb9-d4e1-44e6-a276-458654452a7c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all patients",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patient?page=0&sort=lastName&size=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patient"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "lastName"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create patient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Mark\",\n    \"lastName\": \"Smith\",\n    \"address\": \"New York, NY\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patient",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit patient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Daryl\",\n    \"lastName\": \"Rogahn\",\n    \"address\": \"Poznań\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patient/8801d6d4-b869-4fb5-a039-d4c128813520",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patient",
+								"8801d6d4-b869-4fb5-a039-d4c128813520"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete patient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"as\",\n    \"lastName\": null,\n    \"specialisation\": \"SURGEON\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patient/fb34a288-8266-482d-a1cb-69d66a01a817",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patient",
+								"fb34a288-8266-482d-a1cb-69d66a01a817"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "Create appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"doctorId\": \"50824d5b-6d5b-40c7-ba4a-696212c6913d\",\n    \"patientId\": \"79764974-8658-4d8e-8049-7e00913660f0\",\n    \"startDate\": \"2021-03-15 17:00\",\n    \"location\": \"Poznań\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/appointment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"appointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all appointemtns",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/appointment?page=0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "fb34a288-8266-482d-a1cb-69d66a01a817",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change appointment date",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2021-07-08 15:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/appointment/cf188403-4f8c-4b74-9ed2-e6b9c4878d10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"appointment",
+								"cf188403-4f8c-4b74-9ed2-e6b9c4878d10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete appointemtns",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "tenant",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/appointment/74e39ada-11d7-4e6e-ad76-7060643da491",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"appointment",
+								"74e39ada-11d7-4e6e-ad76-7060643da491"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var Header = require('postman-collection').Header",
+					"pm.request.headers.add(new Header(\"tenant: \" + pm.environment.get('tenant')))"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
