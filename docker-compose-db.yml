@@ -1,0 +1,26 @@
+version: '3.3'
+
+
+services:
+  db1:
+    image: postgres:9
+    env_file:
+      - ./docker/db1.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./docker/db1-init-scripts:/docker-entrypoint-initdb.d
+  db2:
+    image: postgres:9
+    env_file:
+      - ./docker/db2.env
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./docker/db2-init-scripts:/docker-entrypoint-initdb.d
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: "dockerX"
